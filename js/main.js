@@ -27,6 +27,7 @@ class TodoManager {
   }
 
   subscribe(observer) {
+    console.log('subscribe: ', subscribe);
     this.observers.push(observer);
   }
 
@@ -61,6 +62,7 @@ class TodoManager {
   }
 
   loadOrderFromLocalStorage() {
+    console.log('loadOrderFromLocalStorage: ', loadOrderFromLocalStorage);
     try {
       const order = localStorage.getItem("todoOrder");
       return order ? JSON.parse(order) : [];
@@ -887,6 +889,15 @@ class UIManager {
 
     if (deleteBtn) {
       deleteBtn.addEventListener("click", () => this.handleDeleteTodo(todo.id));
+    }
+  }
+
+  addVpChanges () {
+    // Add any additional changes needed for the view port
+    // This can include responsive adjustments, animations, etc.
+    const todosList = document.querySelector(".todos-list");
+    if (todosList) {
+      todosList.classList.add("animate-fade-in");
     }
   }
 
